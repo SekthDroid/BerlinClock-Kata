@@ -1,3 +1,4 @@
+RED = "R"
 OFF = "O"
 YELLOW = "Y"
 __author__ = 'SekthDroid'
@@ -13,15 +14,8 @@ class BerlinClockConverter(object):
 
     def get_five_minutes(self, param):
         minutes = int(param.split(":")[1])
-        result = ""
-        for i in range(5, 60, 5):
-            if i <= minutes:
-                result += "Y"
-            else:
-                result += "O"
-
-        result = list(result)
+        result = [YELLOW if i <= minutes else OFF for i in range(5, 60, 5)]
         for i in range(2, len(result), 3):
-            if result[i] is not "O":
-                result[i] = "R"
+            if result[i] is not OFF:
+                result[i] = RED
         return "".join(result)

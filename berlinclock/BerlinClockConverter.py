@@ -29,3 +29,7 @@ class BerlinClockConverter(object):
         hours = int(param.split(":")[0])
         result = [RED if i <= hours else OFF for i in range(5, 25, 5)]
         return "".join(result)
+
+    def get_seconds(self, param):
+        seconds = int(param.split(":")[2])
+        return YELLOW if seconds % 2 is 0 else OFF

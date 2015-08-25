@@ -13,8 +13,7 @@ class BerlinClockConverter(object):
         minutes = int(param.split(":")[1])
         result = [YELLOW if i <= minutes else OFF for i in range(5, 60, 5)]
         for i in range(2, len(result), 3):
-            if result[i] is not OFF:
-                result[i] = RED
+            if result[i] is not OFF: result[i] = RED
         return "".join(result)
 
     def get_single_hours(self, param):

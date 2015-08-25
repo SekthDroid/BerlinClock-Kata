@@ -25,3 +25,8 @@ class BerlinClockConverter(object):
         digit = digit - 5 if digit > 4 else digit
         result = "".rjust(digit, enabled_state)
         return result.ljust(4, OFF) if len(result) < 4 else result
+
+    def get_five_hours(self, param):
+        hours = int(param.split(":")[0])
+        result = [RED if i <= hours else OFF for i in range(5, 25, 5)]
+        return "".join(result)

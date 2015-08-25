@@ -7,10 +7,7 @@ __author__ = 'SekthDroid'
 class BerlinClockConverter(object):
     def get_single_minutes(self, param):
         minutes = int(param.split(":")[1][1])
-
-        minutes = minutes - 5 if minutes > 4 else minutes
-        result = "".rjust(minutes, "%s" % YELLOW)
-        return result.ljust(4, "%s" % OFF) if len(result) < 4 else result
+        return self.single_row(minutes)
 
     def get_five_minutes(self, param):
         minutes = int(param.split(":")[1])
@@ -22,9 +19,9 @@ class BerlinClockConverter(object):
 
     def get_single_hours(self, param):
         hours = int(param.split(":")[0][1])
-        if hours is 0:
-            return "OOOO"
+        return self.single_row(hours, RED)
 
-        hours = hours - 5 if hours > 4 else hours
-        result = "".rjust(hours, RED)
+    def single_row(self, digit, enabled_state=YELLOW):
+        digit = digit - 5 if digit > 4 else digit
+        result = "".rjust(digit, enabled_state)
         return result.ljust(4, OFF) if len(result) < 4 else result

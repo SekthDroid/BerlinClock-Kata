@@ -45,3 +45,9 @@ class BerlinClockConverterTest(TestCase):
         berlin_clock = self.create_berlin_clock()
         self.assertEqual("Y", berlin_clock.get_seconds("00:00:00"))
         self.assertEqual("O", berlin_clock.get_seconds("23:59:59"))
+
+    def test_should_return_entire_berlin_clock(self):
+        berlin_clock = self.create_berlin_clock()
+        self.assertEqual("YOOOOOOOOOOOOOOOOOOOOOOO", berlin_clock.get_berlin_clock("00:00:00"))
+        self.assertEqual("ORRRRRRROYYRYYRYYRYYYYYY", berlin_clock.get_berlin_clock("23:59:59"))
+        self.assertEqual("ORROOROOOYYRYYRYOOOOYYOO", berlin_clock.get_berlin_clock("11:37:01"))

@@ -35,3 +35,11 @@ class BerlinClockConverter(object):
 
     def convert_to_seconds(self, date):
         return int(date.split(":")[2])
+
+    def get_berlin_clock(self, param):
+        result = self.get_seconds(param)
+        result += self.get_five_hours(param)
+        result += self.get_single_hours(param)
+        result += self.get_five_minutes(param)
+        result += self.get_single_minutes(param)
+        return result

@@ -6,3 +6,5 @@
 .idea/encodings.xml
 
 *.xml
+
+*.pyc

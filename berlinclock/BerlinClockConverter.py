@@ -19,3 +19,12 @@ class BerlinClockConverter(object):
             if result[i] is not OFF:
                 result[i] = RED
         return "".join(result)
+
+    def get_single_hours(self, param):
+        hours = int(param.split(":")[0][1])
+        if hours is 0:
+            return "OOOO"
+
+        hours = hours - 5 if hours > 4 else hours
+        result = "".rjust(hours, RED)
+        return result.ljust(4, OFF) if len(result) < 4 else result
